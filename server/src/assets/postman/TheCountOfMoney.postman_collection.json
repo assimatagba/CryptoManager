@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "4f770a7a-f6fb-4ff4-a6c7-9ff9464f0b66",
+		"name": "TheCountOfMoney",
+		"description": "Epitech MSC-Pro Project for WEB module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Authentification Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3014ad2d-bf27-4442-b7cf-f118b5703760",
+								"exec": [
+									"var responseJson = JSON.parse(responseBody);",
+									"",
+									"if (responseJson[\"data\"].token) {",
+									"    pm.environment.set(\"access_token\", responseJson[\"data\"].token);",
+									"    pm.environment.set(\"logged_as\", responseJson[\"data\"].username);",
+									"    pm.environment.set(\"current_id\", responseJson[\"data\"].id);",
+									"} else {",
+									"    pm.environment.set(\"access_token\", \"\");",
+									"    pm.environment.set(\"logged_as\", \"\");",
+									"    pm.environment.set(\"current_id\", \"\");",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@epitech.eu",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authentification Basic User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "08c98489-ab84-4479-ae65-10e9283ec75d",
+								"exec": [
+									"var responseJson = JSON.parse(responseBody);",
+									"",
+									"if (responseJson.status !== \"ko\" && responseJson[\"data\"] && responseJson[\"data\"].token) {",
+									"    pm.environment.set(\"access_token\", responseJson[\"data\"].token);",
+									"    pm.environment.set(\"logged_as\", responseJson[\"data\"].username);",
+									"    pm.environment.set(\"current_id\", responseJson[\"data\"].id);",
+									"} else {",
+									"    pm.environment.set(\"access_token\", \"\");",
+									"    pm.environment.set(\"logged_as\", \"\");",
+									"    pm.environment.set(\"current_id\", \"\");",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "guest@epitech.eu",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "dbed3d1f-3bb9-4a7d-9afb-cde1658e98ae",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "87146c9c-9fb9-409a-a8fb-28ef1dbfc1d4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc327412-c478-4456-a040-8d749cc6a30b",
+								"exec": [
+									"var responseJson = JSON.parse(responseBody);",
+									"",
+									"if (responseJson.status !== \"ko\" && responseJson[\"data\"] && responseJson[\"data\"].token) {",
+									"    pm.environment.set(\"access_token\", responseJson[\"data\"].token);",
+									"    pm.environment.set(\"logged_as\", responseJson[\"data\"].username);",
+									"    pm.environment.set(\"current_id\", responseJson[\"data\"].id);",
+									"} else {",
+									"    pm.environment.set(\"access_token\", \"\");",
+									"    pm.environment.set(\"logged_as\", \"\");",
+									"    pm.environment.set(\"current_id\", \"\");",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "Guest",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "guest@epitech.eu",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d87296a1-8970-48e8-8f27-89873ae4f13a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "Alex",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "alex@epitech.eu",
+									"type": "text"
+								},
+								{
+									"key": "isAdmin",
+									"value": "true",
+									"type": "text",
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/profile?userID={{current_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "{{current_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ed1a85c2-3c5d-4825-b5aa-c50bf090fa4f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "3c673bf0-ee3f-40f3-b0b3-4c1873dd4b39",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

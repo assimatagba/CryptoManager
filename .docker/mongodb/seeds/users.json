@@ -1,0 +1,23 @@
+[
+  {
+    "provider": "login",
+    "username": "admin",
+    "email": "admin@epitech.eu",
+    "password": "$2a$08$Bq6SgpqyZiKDQo3FA0XZcewiOjDWMoX2QgZmDW7RUZw3hitK2QTHm",
+    "isAdmin": true
+  },
+  {
+    "provider": "login",
+    "username": "basic",
+    "email": "basic@epitech.eu",
+    "password": "$2a$08$9ETXYiKFKGgRnjuVIudPxusHFoEGRW1uqdfeX6b.zrso0SFgUf/DC",
+    "isAdmin": false
+  },
+  {
+    "provider": "login",
+    "username": "guest",
+    "email": "guest@epitech.eu",
+    "password": "$2a$08$zyjOiJK6a9W0NUXZyaVeMeugPIPU9IuGuZD/AiDgAjWTsXsn4UlQ6",
+    "isAdmin": false
+  }
+]

@@ -1,0 +1,56 @@
+{
+  "name": "T-WEB-700-41",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/src/server.js",
+  "scripts": {
+    "start": "tsc-watch --project . --outDir ./build --onSuccess \"nodemon ./build/server.js\"",
+    "copy": "cp -r src/assets/certificates/. build/assets/certificates",
+    "clean": "rimraf build/",
+    "build": "npm run clean && tsc && npm run copy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Namachi06/TheCountOfMoney.git"
+  },
+  "dependencies": {
+    "@types/express-session": "^1.17.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "coingecko-api": "^1.0.10",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.16",
+    "mongoose-unique-validator": "^2.0.3",
+    "node-cron": "^2.0.3",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "node-persist": "^3.1.0",
+    "rss-parser": "^3.9.0",
+    "typescript": "^4.0.5"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/cors": "^2.8.8",
+    "@types/express": "^4.17.9",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/mongoose": "^5.10.1",
+    "@types/mongoose-unique-validator": "^1.0.4",
+    "@types/node": "^14.14.8",
+    "@types/passport": "^1.0.4",
+    "@types/passport-facebook": "^2.1.10",
+    "copyfiles": "^2.4.1",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "nodemon": "^2.0.4",
+    "rimraf": "^3.0.2",
+    "tsc-watch": "^4.2.9"
+  }
+}

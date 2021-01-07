@@ -1,0 +1,71 @@
+version: '3.7'
+services:
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    hostname: mongo
+    env_file: ./.docker/mongodb/.env.dist
+    volumes:
+      - ./.docker/mongodb/initdb.d/:/docker-entrypoint-initdb.d/
+      - ./.docker/mongodb/data/db/:/data/db/
+      - ./.docker/mongodb/data/log/:/var/log/mongodb/
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+      - mongo
+
+  mongo-seed:
+    build: .docker/mongodb/seeds
+    links:
+      - mongo
+    networks:
+      - mongo
+
+  server:
+      build: ./server
+      container_name: server
+      env_file: ./server/.env
+      ports:
+        - "5000:5000"
+      volumes:
+        - ./server/:/server/
+        - /server/node_modules
+        - /server/build
+      depends_on:
+        - mongo
+      environment:
+        - MONGO_USER=user
+        - MONGO_PASSWORD=user06
+        - MONGO_HOSTNAME=mongo
+        - MONGO_PORT=27017
+        - MONGO_DB=TheCountOfMoney
+        - SERVER_URL=http://127.0.0.1:3000
+      networks:
+        - app-network
+
+  app:
+    build: ./client
+    container_name: app
+    volumes:
+      - ./client/:/application
+      - /application/node_modules
+    stdin_open: true
+    depends_on:
+      - mongo
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+      driver: bridge
+  mongo:
+      driver: bridge
+
+volumes:
+  node_modules:
+  web-root:
+    driver: local
