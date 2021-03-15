@@ -3,9 +3,9 @@
 ## Installation
 * Clone and change directory
     ```
-    git clone https://github.com/EpitechMscPro2020/T-WEB-700-41.git
+    git clone https://github.com/assimatagba/CryptoManager.git
 
-    cd T-WEB-700-41
+    cd CryptoManager
     ```
 
 ## Usage
